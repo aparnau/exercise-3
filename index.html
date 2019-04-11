@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>VueJS</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="index.css">
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <button @click="display = !display"> Toggle </button>
+            <p v-if="display"> you either see me</p>
+            <p v-else> or me </p>
+        </div>
+        <div>
+            <ul>
+                <li v-for="(element, index) in myArray">{{ element }} - {{ index }}</li>
+            </ul>
+        </div>
+        <div>
+            <ul>
+                <li v-for="(value, keyName, i) in books">{{ value }} - {{ keyName }} - {{ i }}</li>
+            </ul>
+        </div>
+        <div>
+            <ul>
+                <li v-for="value in notes">
+                    <template v-if="Array.isArray(value)">
+                        <div v-for="element in value">{{ element }}</div>
+                    </template>
+                    <template v-else>
+                        {{ value }}
+                    </template>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                display: true,
+                myArray: ['Aparna', 'T', 'P', 'S'],
+                books: {
+                    title: 'My title'
+                },
+                notes: {
+                    noteName: 'My note',
+                    noteId: "44f4d3dc39f94821a24f8efbc05a2c2e",
+                    labels: ["label1", "label2", "label3"]
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
